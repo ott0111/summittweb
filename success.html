@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Purchase Successful — Summit Tweaks</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--accent:#888888;
+--accent2:#666666;
+--bg:#0b0b14;
+--panel:rgba(255,255,255,.06);
+--stroke:rgba(255,255,255,.10);
+--text:#f5f3ff;
+--muted:rgba(245,243,255,.70);
+--radius:24px;
+--max:1100px;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(1000px 700px at 20% 0%, rgba(136,136,136,.15), transparent 60%),
+radial-gradient(1000px 700px at 80% 0%, rgba(102,102,102,.12), transparent 60%),
+radial-gradient(circle at top,#1a1a2b,var(--bg));
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px 18px;
+}
+
+/* BACKGROUND BLOBS */
+.blob{
+position:fixed;
+width:700px;
+height:700px;
+border-radius:50%;
+filter:blur(60px);
+opacity:.18;
+z-index:-2;
+pointer-events:none;
+animation:float 10s ease-in-out infinite;
+}
+.blob.one{left:-200px;top:-220px;background:var(--accent)}
+.blob.two{right:-240px;top:-240px;background:var(--accent2);animation-delay:-3s}
+.blob.three{left:30%;bottom:-420px;background:rgba(88,101,242,.85);animation-delay:-6s}
+@keyframes float{
+0%,100%{transform:translateY(0) translateX(0) scale(1)}
+50%{transform:translateY(26px) translateX(16px) scale(1.04)}
+}
+
+/* MAIN WRAP */
+.wrap{
+max-width:var(--max);
+width:100%;
+display:grid;
+grid-template-columns: 1fr 1fr;
+gap:18px;
+align-items:stretch;
+}
+
+/* LEFT PANEL */
+.hero{
+background:rgba(30,30,50,.60);
+border:1px solid rgba(136,136,136,.18);
+border-radius:var(--radius);
+backdrop-filter:blur(18px);
+box-shadow: 0 30px 90px rgba(0,0,0,.55);
+padding:28px;
+position:relative;
+overflow:hidden;
+}
+.hero:before{
+content:"";
+position:absolute;
+inset:-2px;
+background:
+radial-gradient(circle at 25% 20%, rgba(136,136,136,.25), transparent 45%),
+radial-gradient(circle at 85% 30%, rgba(102,102,102,.22), transparent 50%);
+opacity:.95;
+pointer-events:none;
+}
+.hero-inner{position:relative}
+
+.brand{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+margin-bottom:22px;
+}
+.logo{
+font-weight:900;
+font-size:18px;
+color:var(--accent);
+text-decoration:none;
+}
+.pill{
+font-size:12px;
+font-weight:900;
+padding:6px 10px;
+border-radius:999px;
+border:1px solid rgba(136,136,136,.35);
+background:rgba(136,136,136,.12);
+color:rgba(245,243,255,.9);
+}
+
+.check{
+width:70px;
+height:70px;
+border-radius:22px;
+display:grid;
+place-items:center;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+box-shadow: 0 20px 70px rgba(102,102,102,.55);
+margin-bottom:18px;
+position:relative;
+animation:pop .7s ease both;
+}
+.check:after{
+content:"";
+position:absolute;
+inset:-8px;
+border-radius:28px;
+background:radial-gradient(circle, rgba(136,136,136,.22), transparent 60%);
+filter:blur(10px);
+z-index:-1;
+}
+@keyframes pop{
+0%{transform:scale(.85);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+
+h1{
+font-size:38px;
+font-weight:900;
+letter-spacing:-.8px;
+line-height:1.05;
+}
+.sub{
+margin-top:12px;
+color:var(--muted);
+line-height:1.7;
+font-weight:700;
+}
+
+.actions{
+margin-top:18px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn{
+border:none;
+cursor:pointer;
+padding:12px 14px;
+border-radius:16px;
+font-weight:900;
+color:white;
+text-decoration:none;
+transition:.25s;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+white-space:nowrap;
+}
+.btn.primary{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+box-shadow: 0 14px 45px rgba(102,102,102,.45);
+}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 60px rgba(102,102,102,.58)}
+.btn.ghost{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.10);
+color:rgba(245,243,255,.92);
+}
+.btn.ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+.btn.discord{background:#777777}
+.btn.discord:hover{transform:translateY(-2px)}
+
+/* RIGHT PANEL */
+.receipt{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.10);
+border-radius:var(--radius);
+backdrop-filter:blur(18px);
+box-shadow: 0 26px 80px rgba(0,0,0,.45);
+padding:24px;
+position:relative;
+overflow:hidden;
+}
+.receipt h2{
+font-size:16px;
+font-weight:900;
+color:rgba(245,243,255,.95);
+}
+.line{
+height:1px;
+background:rgba(255,255,255,.10);
+margin:16px 0;
+}
+.row{
+display:flex;
+justify-content:space-between;
+gap:12px;
+padding:10px 0;
+color:rgba(245,243,255,.88);
+font-weight:800;
+}
+.small{
+color:var(--muted);
+font-weight:800;
+font-size:13px;
+line-height:1.7;
+}
+.ul{
+margin-top:10px;
+list-style:none;
+}
+.ul li{
+padding:10px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+color:rgba(245,243,255,.85);
+font-weight:800;
+}
+.ul li:last-child{border-bottom:none}
+.tag{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 10px;
+border-radius:999px;
+background:rgba(136,136,136,.12);
+border:1px solid rgba(136,136,136,.25);
+font-weight:900;
+font-size:12px;
+margin-top:12px;
+}
+
+/* CONFETTI */
+.confetti{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:5;
+overflow:hidden;
+}
+.piece{
+position:absolute;
+width:10px;
+height:14px;
+border-radius:4px;
+opacity:.9;
+animation:fall 1.6s ease-out forwards;
+}
+@keyframes fall{
+0%{transform:translateY(-20px) rotate(0deg);opacity:0}
+10%{opacity:1}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+.wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<div class="confetti" id="confetti"></div>
+
+<div class="wrap">
+
+  <!-- LEFT -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <a class="logo" href="index.html">Summit Tweaks</a>
+        <div class="pill" id="planPill">Unlocked</div>
+      </div>
+
+      <div class="check">✔</div>
+
+      <h1 id="title">Purchase Successful</h1>
+      <p class="sub" id="subtitle">
+        Your upgrade is now active. Continue to download and finish setup.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" id="goDownload" href="download.html">Continue to Download</a>
+        <a class="btn ghost" href="docs.html">Read Docs</a>
+        <a class="btn discord" href="https://discord.gg/84rMHMeKYp" target="_blank">Join Discord</a>
+      </div>
+
+      <div style="margin-top:16px" class="small">
+        If you don’t see your unlock immediately, refresh your browser or open the download page again.
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="receipt">
+    <h2>Order Summary</h2>
+    <div class="line"></div>
+
+    <div class="row">
+      <div>Plan</div>
+      <div id="planName">—</div>
+    </div>
+
+    <div class="row">
+      <div>Status</div>
+      <div style="color:rgba(136,136,136,.95);font-weight:900">Paid</div>
+    </div>
+
+    <div class="row">
+      <div>Access</div>
+      <div id="accessLine">—</div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="small"><b>What you unlocked</b></div>
+    <ul class="ul" id="unlocks">
+      <li>Premium access enabled</li>
+      <li>Download access</li>
+      <li>Support access</li>
+    </ul>
+
+    <div class="tag" id="tagLine">✨ Premium Unlocked</div>
+
+    <div class="line"></div>
+    <div class="small">
+      Tip: Keep your key safe. If you ever need help, open a ticket in Discord with proof of purchase.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Read plan from URL: success.html?plan=pro OR ?plan=lifetime
+  const params = new URLSearchParams(window.location.search);
+  const plan = (params.get("plan") || "pro").toLowerCase();
+
+  const planPill = document.getElementById("planPill");
+  const planName = document.getElementById("planName");
+  const accessLine = document.getElementById("accessLine");
+  const unlocks = document.getElementById("unlocks");
+  const tagLine = document.getElementById("tagLine");
+  const goDownload = document.getElementById("goDownload");
+  const title = document.getElementById("title");
+  const subtitle = document.getElementById("subtitle");
+
+  function setPlanUI(){
+    if(plan === "lifetime"){
+      planPill.textContent = "Lifetime";
+      planName.textContent = "Lifetime ($15)";
+      accessLine.textContent = "All features + future updates";
+      tagLine.textContent = "👑 Lifetime Unlocked";
+      unlocks.innerHTML = `
+        <li>50+ Tweaks (Full library)</li>
+        <li>Max Mode + all future updates</li>
+        <li>Premium profiles + priority unlocks</li>
+      `;
+      title.textContent = "Lifetime Activated";
+      subtitle.textContent = "You now have full access. Continue to download and start optimizing.";
+    }else{
+      planPill.textContent = "Pro";
+      planName.textContent = "Pro ($7)";
+      accessLine.textContent = "Advanced tweaks + profiles";
+      tagLine.textContent = "⚡ Pro Unlocked";
+      unlocks.innerHTML = `
+        <li>+20 Advanced Tweaks</li>
+        <li>Profiles enabled</li>
+        <li>Priority Support access</li>
+      `;
+      title.textContent = "Pro Activated";
+      subtitle.textContent = "You now have Pro access. Continue to download and finish setup.";
+    }
+
+    // Send them to download page with plan param too
+    goDownload.href = `download.html?plan=${encodeURIComponent(plan)}`;
+  }
+
+  setPlanUI();
+
+  // Confetti burst (light)
+  const confetti = document.getElementById("confetti");
+  function burst(){
+    const pieces = 40;
+    for(let i=0;i<pieces;i++){
+      const p = document.createElement("div");
+      p.className = "piece";
+      const left = Math.random()*100;
+      const delay = Math.random()*0.3;
+      const size = 8 + Math.random()*8;
+      p.style.left = left + "vw";
+      p.style.top = (-10 - Math.random()*30) + "px";
+      p.style.width = size + "px";
+      p.style.height = (size+4) + "px";
+      p.style.animationDelay = delay + "s";
+
+      // color mix (purple/white/blue)
+      const colors = [
+        "rgba(136,136,136,.95)",
+        "rgba(102,102,102,.95)",
+        "rgba(255,255,255,.90)",
+        "rgba(88,101,242,.95)"
+      ];
+      p.style.background = colors[Math.floor(Math.random()*colors.length)];
+      confetti.appendChild(p);
+
+      setTimeout(()=>p.remove(), 2200);
+    }
+  }
+  burst();
+</script>
+
+</body>
+</html>
+

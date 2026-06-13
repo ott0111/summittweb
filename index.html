@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Tweaks — Elite System Optimization</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--accent:#888888;
+--accent2:#666666;
+--bg:#0b0b14;
+--panel:rgba(255,255,255,.06);
+--stroke:rgba(255,255,255,.08);
+--text:#f5f3ff;
+--muted:rgba(245,243,255,.65);
+--radius:22px;
+--max:1200px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(1200px 800px at 20% 0%, rgba(136,136,136,.18), transparent 60%),
+radial-gradient(1200px 800px at 80% 0%, rgba(102,102,102,.15), transparent 60%),
+radial-gradient(circle at top,#1a1a2b,var(--bg));
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* subtle grid */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+background-size:60px 60px;
+opacity:.08;
+pointer-events:none;
+mask-image:radial-gradient(circle at 50% 0%, black 10%, transparent 70%);
+}
+
+/* blobs */
+.blob{
+position:fixed;
+width:700px;
+height:700px;
+border-radius:50%;
+filter:blur(60px);
+opacity:.2;
+z-index:-1;
+animation:float 12s ease-in-out infinite;
+}
+.blob.one{left:-200px;top:-200px;background:var(--accent)}
+.blob.two{right:-200px;top:-220px;background:var(--accent2);animation-delay:-4s}
+.blob.three{left:30%;bottom:-400px;background:#777777;animation-delay:-7s}
+
+@keyframes float{
+0%,100%{transform:translateY(0) translateX(0)}
+50%{transform:translateY(30px) translateX(20px)}
+}
+
+/* progress bar */
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+width:0%;
+z-index:9999;
+}
+
+/* container */
+.container{
+max-width:var(--max);
+margin:auto;
+padding:0 20px;
+}
+
+/* nav */
+.nav{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(15,15,25,.7);
+backdrop-filter:blur(18px);
+border-bottom:1px solid var(--stroke);
+}
+
+.nav-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+.logo{
+font-weight:900;
+font-size:20px;
+color:var(--accent);
+text-decoration:none;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+.nav-links a{
+color:rgba(245,243,255,.85);
+text-decoration:none;
+font-weight:700;
+font-size:14px;
+padding:8px 10px;
+border-radius:12px;
+transition:.25s;
+}
+
+.nav-links a:hover{
+background:rgba(255,255,255,.06);
+color:#fff;
+}
+
+.nav-cta{
+display:flex;
+gap:10px;
+}
+
+.btn{
+border:none;
+cursor:pointer;
+padding:10px 14px;
+border-radius:16px;
+font-weight:800;
+transition:.25s;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:white;
+box-shadow:0 15px 45px rgba(102,102,102,.45);
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+}
+
+.btn-ghost{
+background:rgba(255,255,255,.06);
+border:1px solid var(--stroke);
+color:white;
+}
+
+.btn-ghost:hover{
+transform:translateY(-3px);
+}
+
+/* hero */
+.hero{
+padding:140px 0 100px;
+text-align:center;
+opacity:0;
+transform:translateY(20px);
+transition:1s;
+}
+
+.hero.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.hero h1{
+font-size:64px;
+font-weight:900;
+line-height:1.05;
+margin-bottom:20px;
+}
+
+.gradient{
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+color:var(--muted);
+max-width:720px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+margin-bottom:40px;
+}
+
+.hero-actions{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+/* pricing */
+.pricing{
+padding:100px 0;
+display:flex;
+justify-content:center;
+gap:22px;
+flex-wrap:wrap;
+}
+
+.card{
+width:340px;
+background:var(--panel);
+border:1px solid var(--stroke);
+border-radius:var(--radius);
+padding:32px;
+backdrop-filter:blur(16px);
+transition:.3s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(136,136,136,.4);
+}
+
+.card h3{
+font-weight:900;
+margin-bottom:10px;
+}
+
+.price{
+font-size:38px;
+font-weight:900;
+color:var(--accent);
+margin-bottom:18px;
+}
+
+.card ul{
+list-style:none;
+margin-bottom:20px;
+}
+
+.card li{
+padding:8px 0;
+border-bottom:1px solid rgba(255,255,255,.06);
+color:var(--muted);
+font-weight:700;
+}
+
+.card li:last-child{border-bottom:none}
+
+/* footer */
+.footer{
+border-top:1px solid var(--stroke);
+padding:50px 0;
+text-align:center;
+color:var(--muted);
+font-weight:700;
+}
+
+@media(max-width:900px){
+.hero h1{font-size:42px}
+.nav-links{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress"></div>
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<!-- NAV -->
+<div class="nav">
+<div class="container nav-inner">
+<a href="index.html" class="logo">Summit Tweaks</a>
+
+<div class="nav-links">
+<a href="features.html">Features</a>
+<a href="docs.html">Docs</a>
+<a href="benchmarks.html">Benchmarks</a>
+<a href="credibility.html">Credibility</a>
+<a href="download.html">Download</a>
+</div>
+
+<div class="nav-cta">
+<a class="btn btn-ghost" href="https://discord.gg/84rMHMeKYp" target="_blank">Discord</a>
+<a class="btn btn-primary" href="#pricing">Get Started</a>
+</div>
+</div>
+</div>
+
+<!-- HERO -->
+<div class="container hero" id="hero">
+<h1>Unlock <span class="gradient">Maximum Performance</span></h1>
+<p>
+Elite system optimization engineered for serious gamers and performance enthusiasts.
+Built with precision. Designed like premium software.
+</p>
+
+<div class="hero-actions">
+<a class="btn btn-primary" href="#pricing">View Plans</a>
+<a class="btn btn-ghost" href="features.html">Explore Features</a>
+</div>
+</div>
+
+<!-- PRICING -->
+<div class="container pricing" id="pricing">
+
+<div class="card">
+<h3>Trial</h3>
+<div class="price">$0</div>
+<ul>
+<li>Core Tweaks</li>
+<li>Windows Panels</li>
+<li>Hardware Dashboard</li>
+</ul>
+<a class="btn btn-ghost" href="download.html?plan=trial">Download Trial</a>
+</div>
+
+<div class="card">
+<h3>Pro</h3>
+<div class="price">$7</div>
+<ul>
+<li>+20 Advanced Tweaks</li>
+<li>Profiles</li>
+<li>Priority Support</li>
+</ul>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="yeezy5731@gmail.com">
+<input type="hidden" name="item_name" value="Summit Toolkit Pro">
+<input type="hidden" name="amount" value="7.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="https://Summittweaks.store/success.html?plan=pro">
+<button type="submit" class="btn btn-primary">Buy Pro</button>
+</form>
+</div>
+
+<div class="card">
+<h3>Lifetime</h3>
+<div class="price">$15</div>
+<ul>
+<li>50+ Tweaks</li>
+<li>Future Updates</li>
+<li>Max Mode</li>
+</ul>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="yeezy5731@gmail.com">
+<input type="hidden" name="item_name" value="Summit Toolkit Lifetime">
+<input type="hidden" name="amount" value="15.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="https://Summittweaks.store/success.html?plan=lifetime">
+<button type="submit" class="btn btn-primary">Buy Lifetime</button>
+</form>
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 Summit Tweaks — Engineered for Performance
+</div>
+
+<script>
+/* scroll reveal */
+window.addEventListener("load",()=>{
+document.getElementById("hero").classList.add("show");
+});
+
+/* progress bar */
+window.addEventListener("scroll",()=>{
+const top=document.documentElement.scrollTop;
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.querySelector(".progress").style.width=(top/height)*100+"%";
+});
+</script>
+
+</body>
+</html>
+
