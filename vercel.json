@@ -1,12 +1,22 @@
 {
   "headers": [
     {
+<<<<<<< HEAD
       "source": "/SummitToolkit.exe",
       "headers": [
         { "key": "Content-Type", "value": "application/octet-stream" },
         { "key": "Content-Disposition", "value": "attachment; filename=\"SummitToolkit.exe\"" }
+=======
+      "source": "/YZYToolkit.exe",
+      "headers": [
+        { "key": "Content-Type", "value": "application/octet-stream" },
+        { "key": "Content-Disposition", "value": "attachment; filename=\"YZYToolkit.exe\"" }
+>>>>>>> c4a07965eff9d084c55c7cd70e1cb9ead0eae0a7
       ]
     }
   ]
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4a07965eff9d084c55c7cd70e1cb9ead0eae0a7
