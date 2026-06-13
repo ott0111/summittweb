@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YZY Tweaks</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#09090f;--panel:rgba(255,255,255,.06);--border:rgba(255,255,255,.10);--text:#f7f5ff;--muted:#c7c2e0;--accent:#a855f7;--accent2:#7c3aed;--radius:28px;--max:1200px;}
+html{scroll-behavior:smooth}
+body{min-height:100vh;font-family:'Inter',sans-serif;background:radial-gradient(circle at top, rgba(168,85,247,.16), transparent 30%),radial-gradient(circle at 80% 10%, rgba(124,58,237,.11), transparent 30%),linear-gradient(180deg,#09090f 0%,#070708 100%);color:var(--text);}
+a{color:inherit;text-decoration:none;}
+.page{min-height:100vh;padding:28px 20px 48px;}
+.page-inner{max-width:var(--max);margin:0 auto;}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;margin-bottom:36px;border-radius:999px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(18px);}
+.logo{font-size:22px;font-weight:900;color:var(--accent);}
+.nav-links{display:flex;flex-wrap:wrap;gap:16px;}
+.nav-links a{font-weight:700;color:rgba(247,245,255,.84);transition:.2s;}
+.nav-links a:hover{color:#fff;}
+.hero{display:grid;gap:24px;padding:40px;border-radius:32px;background:rgba(255,255,255,.05);border:1px solid var(--border);box-shadow:0 28px 90px rgba(0,0,0,.35);backdrop-filter:blur(20px);}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;}
+.eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.24em;color:rgba(168,85,247,.9);margin-bottom:12px;}
+.hero h1{font-size:clamp(3rem,4vw,4.4rem);line-height:1.02;max-width:11ch;}
+.hero-text{font-size:1.05rem;line-height:1.8;color:var(--muted);max-width:720px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;font-weight:900;border-radius:18px;transition:.25s;}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 18px 40px rgba(124,58,237,.35);}
+.btn.primary:hover{transform:translateY(-2px);}
+.btn.secondary{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);}
+.btn.secondary:hover{background:rgba(255,255,255,.08);}
+.section{margin-top:50px;}
+.section-header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:26px;}
+.section-header h2{font-size:2.05rem;line-height:1.1;}
+.section-copy{max-width:760px;color:var(--muted);line-height:1.8;}
+.grid{display:grid;gap:20px;}
+.cards{grid-template-columns:repeat(3,minmax(0,1fr));}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:26px;padding:30px;backdrop-filter:blur(16px);transition:.25s;}
+.card:hover{transform:translateY(-4px);border-color:rgba(168,85,247,.35);}
+.card h3{font-size:1.15rem;margin-bottom:10px;}
+.card p{color:var(--muted);line-height:1.75;}
+.panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:28px;padding:32px;backdrop-filter:blur(16px);}
+.panel h3{font-size:1.2rem;margin-bottom:16px;}
+.panel ul{list-style:none;padding:0;margin:0;}
+.panel li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);color:var(--muted);font-weight:700;}
+.panel li:last-child{border-bottom:0;}
+@media(max-width:1024px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.nav{flex-wrap:wrap;justify-content:center;}.nav-links{justify-content:center;}.section-header{align-items:flex-start;}}
+@media(max-width:640px){.hero{padding:28px;}.hero h1{font-size:2.6rem;}.nav{padding:16px;}.page{padding:20px 16px 40px;}}</style>
+</head>
+<body>
+<div class="page"><div class="page-inner"><div class="nav"><a href="index.html" class="logo">YZY Tweaks</a><div class="nav-links"><a href="index.html">Home</a><a href="docs.html">Docs</a><a href="features.html">Features</a><a href="benchmarks.html">Benchmarks</a><a href="credibility.html">Credibility</a><a href="download.html">Download</a></div></div><section class="hero"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow">YZY Tweaks</div><h1>Premium Windows performance, stability, and reliability in one polished toolkit.</h1><p class="hero-text">YZY Tweaks brings system-level optimizations, cleanups, and performance profiles together in a modern interface. Every page feels consistent, and every step is designed to keep updates, downloads, and support easy.</p><div class="hero-actions"><a href="download.html" class="btn primary">Download Now</a><a href="docs.html" class="btn secondary">Read the Docs</a></div></div><div class="panel"><h3>Why users choose YZY Tweaks</h3><ul><li>Fast setup with safe system profiles</li><li>Optimized for gaming, streaming, and daily work</li><li>Reversible changes with restore points built in</li><li>One unified UI across every site page</li></ul></div></div></section><section class="section"><div class="section-header"><h2>What’s included</h2><p class="section-copy">A consistent interface across docs, downloads, benchmarks, and support. Each page now shares the same header, button styles, and visual experience.</p></div><div class="grid cards"><div class="card"><h3>Performance Tuning</h3><p>System tweaks for CPU, GPU, memory, and responsiveness that work together without noise.</p></div><div class="card"><h3>Detailed Docs</h3><p>Clear installation steps, activation guidance, and troubleshooting in one place.</p></div><div class="card"><h3>Trusted Results</h3><p>Benchmarks and credibility content that reinforce the product value and safety.</p></div><div class="card"><h3>Smooth Navigation</h3><p>All pages now preserve the same header, button styles, and spacing for an app-like flow.</p></div><div class="card"><h3>Download Flow</h3><p>Download page, success page, and activation flow have been updated to match the homepage.</p></div><div class="card"><h3>Modern Brand</h3><p>Updated wording and consistent page styling give the whole site a clean, premium look.</p></div></div></section><section class="section" id="pricing"><div class="section-header"><h2>Plans and access</h2><p class="section-copy">Choose a plan for advanced tweak access, priority downloads, and future updates. The same polished UI is preserved throughout the site.</p></div><div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));"><div class="panel"><h3>Pro</h3><ul><li>+20 advanced tweaks</li><li>Priority download access</li><li>Performance profiles</li></ul></div><div class="panel"><h3>Lifetime</h3><ul><li>Full tweak library</li><li>Future updates included</li><li>All unlocked profiles</li></ul></div></div></section></div></div>
+</body>
+</html>
