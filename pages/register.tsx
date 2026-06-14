@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState, FormEvent } from 'react'
-import { supabase } from '../lib/supabaseClient'
+import { getSupabase } from '../lib/supabaseClient'
 
 export default function Register(){
   const [email, setEmail] = useState('')
@@ -15,6 +15,8 @@ export default function Register(){
     setLoading(true)
     setMessage(null)
     try {
+      const supabase = getSupabase()
+      if (!supabase) throw new Error('Supabase is not configured')
       const { data, error } = await supabase.auth.signUp({ email, password })
       if (error) throw error
       setMessage('Check your email for a verification link.')

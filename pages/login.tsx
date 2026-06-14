@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Link from 'next/link'
 import { useState, FormEvent } from 'react'
-import { supabase } from '../lib/supabaseClient'
+import { getSupabase } from '../lib/supabaseClient'
 
 export default function Login(){
   const [email, setEmail] = useState('')
@@ -16,6 +16,8 @@ export default function Login(){
     setLoading(true)
     setMessage(null)
     try {
+      const supabase = getSupabase()
+      if (!supabase) throw new Error('Supabase is not configured')
       const { data, error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) throw error
       setMessage('Signed in successfully')
