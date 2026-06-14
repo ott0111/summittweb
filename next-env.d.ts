@@ -1,6 +1,5 @@
 /// <reference types="next" />
-/// <reference types="next/types/global" />
-// This file is automatically added by Next.js to provide framework types.
-// Do not edit -- if missing, Next's build may warn about TypeScript setup.
+/// <reference types="next/image-types/global" />
 
-export {}
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/pages/building-your-application/configuring/typescript for more information.
