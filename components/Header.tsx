@@ -2,18 +2,23 @@ import Link from 'next/link'
 
 export default function Header(){
   return (
-    <header className="glass p-4 mb-8">
-      <div className="container flex items-center justify-between">
-        <Link href="/" className="font-extrabold text-2xl bg-clip-text text-transparent" style={{background: 'linear-gradient(90deg,#7c3aed,#a855f7)'}}>Summit</Link>
-        <nav className="hidden md:flex gap-6 items-center text-sm">
-          <Link href="/features">Features</Link>
-          <Link href="/pricing">Pricing</Link>
-          <Link href="/docs">Docs</Link>
-          <Link href="/about">About</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/download" className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#7c3aed] to-[#a855f7] text-white font-bold">Download</Link>
+    <header className="glass border-white/10 px-6 py-5 mb-8 backdrop-blur-xl">
+      <div className="container flex flex-wrap items-center justify-between gap-4">
+        <Link href="/" className="font-extrabold text-2xl tracking-tight bg-clip-text text-transparent" style={{ background: 'linear-gradient(90deg, #7c3aed, #a855f7)' }}>
+          Summit
+        </Link>
+        <nav className="hidden lg:flex gap-6 items-center text-sm text-slate-200/85">
+          <Link href="/features" className="transition hover:text-white">Features</Link>
+          <Link href="/pricing" className="transition hover:text-white">Pricing</Link>
+          <Link href="/docs" className="transition hover:text-white">Docs</Link>
+          <Link href="/about" className="transition hover:text-white">About</Link>
+          <Link href="/blog" className="transition hover:text-white">Blog</Link>
+          <Link href="/contact" className="transition hover:text-white">Contact</Link>
         </nav>
+        <div className="flex gap-3">
+          <Link href="/download" className="btn-primary">Download</Link>
+          <Link href="/pricing" className="btn-secondary">Pricing</Link>
+        </div>
       </div>
     </header>
   )
