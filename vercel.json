@@ -1,5 +1,11 @@
 {
-  "outputDirectory": ".next",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
   "headers": [
     {
       "source": "/YZYToolkit.exe",
