@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0b10;
+  --panel: rgba(255,255,255,0.04);
+  --glass: rgba(255,255,255,0.03);
+  --muted: #c7c2e0;
+  --accent: linear-gradient(90deg,#7c3aed,#a855f7);
+}
+
+html,body,#__next{height:100%;}
+body{@apply bg-gradient-to-b from-[#070707] to-[#050406] text-white antialiased;}
+
+.glass {background: var(--glass); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px}
+
+.container {max-width: 1200px; margin: 0 auto; padding: 2rem}
