@@ -24,7 +24,7 @@ export default function Pricing(){
       // Return approval link if available
       const approval = data.links?.find((l: any) => l.rel === 'approve')?.href
       if (approval) window.location.href = approval
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Checkout error', err)
       alert('Unable to start checkout. Check console for details.')
     } finally {
@@ -79,13 +79,13 @@ export default function Pricing(){
             const capture = await resp.json()
             // TODO: record order in DB, provision subscription
             window.location.href = '/success'
-          } catch (err) {
+          } catch (err: unknown) {
             console.error('Capture error', err)
             window.location.href = '/cancel'
           }
         },
         onCancel: () => { window.location.href = '/cancel' },
-        onError: (err: any) => { console.error('PayPal Buttons error', err); alert('Payment error') }
+        onError: (err: unknown) => { console.error('PayPal Buttons error', err); alert('Payment error') }
       }).render('#paypal-buttons-container')
     }catch(e){console.error(e)}
   }

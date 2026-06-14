@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { supabase } from '../lib/supabaseClient'
 
 export default function Login(){
@@ -11,7 +11,7 @@ export default function Login(){
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
     setMessage(null)
@@ -19,8 +19,9 @@ export default function Login(){
       const { data, error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) throw error
       setMessage('Signed in successfully')
-    } catch (err: any) {
-      setMessage(err.message || 'An error occurred')
+    } catch (err: unknown) {
+      if (err instanceof Error) setMessage(err.message)
+      else setMessage('An error occurred')
     } finally {
       setLoading(false)
     }
